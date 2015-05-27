@@ -1,0 +1,27 @@
+﻿<ion-view view-title="Kích hoạt tài khoản" align-title="center">
+	<ion-content class="has-header text-left padding">
+		
+		<div class="list" style="margin-top: 100px">
+			<div class="item item-divider energized">
+				Kích hoạt tài khoản
+			</div>
+			<div class="item item-text-wrap">
+				Vui lòng nhập số điện thoại để kích hoạt
+			</div>
+			<div class="item item-input-inset">
+				
+				<label class="item-input-wrapper">
+				  <input type="number" placeholder="Số điện thoại" ng-model="active.phone">
+				</label>
+			</div>
+		</div>
+		<div ng-bind="formWarning" class="assertive text-center padding"></div>
+		<div class="padding">
+		<button class="button button-block button-balanced" ng-click="next()">
+                Tiếp tục
+        </button>
+		</div>
+  
+	</ion-content>
+	
+</ion-view>

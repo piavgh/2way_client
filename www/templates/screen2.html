@@ -1,0 +1,171 @@
+<ion-view view-title="Lộ trình" hide-back-button="true" align-title="center">
+	<ion-content class="has-header has-tabs text-left">
+		<div class="list">
+			<div class="item item-divider">
+				Bốc hàng
+			</div>
+			<div class="item item-input-inset ">
+				<label class="item-input-wrapper">
+					<input type="text" g-places-autocomplete ng-model="send.address" placeholder="Địa điểm *" style="width: 100%"/>
+				</label>
+				<!-- <button class="button button-small button-positive" ng-click="addSend(sendAddress)">
+				  Thêm
+				</button> -->
+			</div>
+			
+			<div>
+				<label class=" item-input">
+				<span class="input-label">Mô tả</span><br/>
+				</label>
+				<div class="padding">
+				<textarea class="border padding" ng-model="send.description" rows ="3" placeholder="Điều kiện bốc xếp, xe có vào được không..."></textarea>
+				</div>	
+			</div>
+			<div class="text-center">
+				<img class="margin-right" ng-src="{{b.img}}" alt="{{b.name}}" ng-repeat="b in btSend" ng-class="{on:b.state}"ng-click="toggle()"/>
+			</div>
+			
+			<!-- <label class="item item-input" ng-click="sendDate()">
+				<div class="input-label">
+					Ngày
+				</div>
+				<input type="text" placeholder="dd-mm-yyyy"  ng-model = "send.date" />
+			</label> -->
+		
+			<label class="item" ng-click="sendDate()">
+					Ngày <span class= "assertive">*</span>
+				<span class="item-note">
+					{{send.date}}
+				</span>
+			</label>
+			
+			<label class="item" ng-click="sendTime()">
+					Thời gian <span class= "assertive">*</span>
+				<span class="item-note">
+					{{send.time}}
+				</span>
+			</label>
+			
+			
+			<!-- <label class="item item-input" ng-click="sendTime()">
+				<div class="input-label">
+					Thời gian
+				</div>
+				<input type="text" placeholder="hh:mm"  ng-model = "send.time"  />
+			</label> -->
+			<!-- <ion-list>
+			<ion-item class="item item-button-right" ng-repeat="add in sendAddressArray track by $index" ng-show="getEmptySend()">
+				{{add}}
+				<button class="button button-small button-icon icon ion-minus-round " ng-click="delete1Send($index)">
+				</button>
+			</ion-item>
+			</ion-list>
+			<div class="text-center padding">
+			<button class="button button-small button-assertive" ng-click="deleteSend()" ng-show="get2Send()" >
+				<i class="icon ion-trash-b"></i>
+				Xóa
+			</button>
+			</div> -->
+		</div>
+		
+		<div class="list margin-top">
+			<div class="item item-divider">
+				Trả hàng
+			</div>
+			<div class="item item-input-inset">
+				<label class="item-input-wrapper">
+				  <!-- <input type="text" placeholder="Địa điểm" ng-autocomplete="receiveAddress" details="details2" options="options1"> -->
+					<!-- <ion-google-place placeholder="Địa điểm" ng-model="receiveAddress"/> -->
+					<input type="text" g-places-autocomplete ng-model="receive.address" placeholder="Địa điểm *" style="width: 100%" />
+				</label>
+				<!-- <button class="button button-small button-positive" ng-click="addReceive(receiveAddress)">
+				  Thêm
+				</button> -->
+			</div>
+			
+			<div>
+				<label class=" item-input">
+				<span class="input-label">Mô tả</span><br/>
+				</label>
+				<div class="padding">
+				<textarea class="border padding" ng-model="receive.description" rows ="3" placeholder="Điều kiện bốc xếp, xe có vào được không..."></textarea>
+				</div>	
+			</div>
+			<div class="text-center">
+				<img class="margin-right" ng-src="{{b.img}}" alt="{{b.name}}" ng-repeat="b in btReceive" ng-class="{on:b.state}"ng-click="toggle()"/>
+			</div>
+			
+			<label class="item" ng-click="receiveDate()">
+					Ngày <span class= "assertive">*</span>
+				<span class="item-note">
+					{{receive.date}}
+				</span>
+			</label>
+			
+			<label class="item" ng-click="receiveTime()">
+					Thời gian <span class= "assertive">*</span>
+				<span class="item-note">
+					{{receive.time}}
+				</span>
+			</label>
+			
+			
+			
+			
+			<!-- 
+			<label class="item item-input" ng-click="receiveDate()">
+				<div class="input-label">
+					Ngày
+				</div>
+				<input type="text" placeholder="dd-mm-yyyy"  ng-model = "receive.date" />
+			</label>
+			
+			<label class="item item-input" ng-click="receiveTime()">
+				<div class="input-label">
+					Thời gian
+				</div>
+				<input type="text" placeholder="hh:mm"  ng-model = "receive.time" />
+			</label> -->
+			
+			<!-- <ion-list>
+			<ion-item class="item item-button-right" ng-repeat="add in receiveAddressArray track by $index" ng-show="getEmptyReceive()">
+					{{add}}
+					<button class="button button-small button-icon icon ion-minus-round" ng-click="delete1Receive($index)">
+					</button>
+			</ion-item>
+			</ion-list>
+			<div class="text-center padding">
+			<button class="button button-small button-assertive" ng-click="deleteReceive()" ng-show="get2Receive()">
+				<i class="icon ion-trash-b"></i>
+				Xóa
+			</button>
+			</div> -->
+		</div>
+		<div ng-if="formWarning" class="assertive text-center padding">
+			Vui lòng nhập đầy đủ thông tin(*)
+		</div>
+		<div class="padding">
+		<button class="button button-block button-balanced" ng-click="next(sendAddress, receiveAddress)">
+            Tiếp tục
+        </button>
+		</div>
+
+        
+	</ion-content>
+	<div class="tabs-stable tabs-striped tabs-color-balanced">
+    <div class="tabs ">
+      <a class="tab-item active" href="#/tab/screen2">
+        <i class="icon ion-plus-circled"></i>
+        
+      </a>
+      <a class="tab-item" href="#/tab/history">
+        <i class="icon ion-star"></i>
+       
+      </a>
+      <a class="tab-item" href="#/tab/main">
+        <i class="icon ion-chatboxes"></i>
+       
+      </a>
+    </div>
+  </div>
+</ion-view>

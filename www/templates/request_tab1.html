@@ -1,0 +1,25 @@
+﻿<div class="item item-divider">
+		<span>Danh sách lái xe</span>
+</div>
+<!-- Notification for no request -->
+<div class="card" ng-if="!requests.length">
+    <div class="item item-text-wrap text-center">
+        Chưa có lái xe chấp nhận yêu cầu
+    </div>
+</div>
+<!-- end of notification -->
+
+<!-- Request list -->
+<div class="list margin-top" ng-repeat="req in requests" ng-click="goDetail(req)">
+	<div class="item item-divider">
+		<span class="item-note-left energized">{{req.price}} VND</span>
+        <span class="item-note energized">{{req.time}}</span>
+		
+    </div>
+	
+	<div class="item" >
+    {{req.fullName}}
+    <img class="item-note" ng-src="img/5stars/{{req.rating}}.png">
+	</div>
+	
+</div>

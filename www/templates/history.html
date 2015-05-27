@@ -1,0 +1,48 @@
+﻿<ion-view view-title="Quản lí giao dịch" hide-back-button="true" align-title="center">
+	<ion-content class="has-header has-tabs text-left padding">			
+		<!-- Pull down refresher -->
+        <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="doRefresh()">
+        </ion-refresher>
+        <!-- end of refresher -->
+		<label class="item item-input item-select">
+          <div class="input-label">
+            Hiển thị
+          </div>
+          <select ng-options="item.name for item in values" ng-model="selected" ng-change="loadData(selected.type)">
+          </select>
+        </label>
+		
+		<div ng-if="selected.id === 0 || selected.id === 5" ng-include="'templates/trans_tab1.html'" class="padding-vertical">
+        </div><!-- end of request list -->
+		
+		<div ng-if="selected.id === 1" ng-include="'templates/trans_tab2.html'" class="padding-vertical">
+        </div><!-- end of request list -->
+		
+		<div ng-if="selected.id === 2 ||selected.id === 3 || selected.id === 4" ng-include="'templates/trans_tab3.html'" class="padding-vertical">
+        </div><!-- end of request list -->
+		
+		<!-- Load more scroll -->
+        <ion-infinite-scroll ng-if='moreDataCanBeLoaded' on-infinite="loadMoreData()" icon="ion-loading-c" distance="1%">
+        </ion-infinite-scroll>
+        <!-- end of scroll -->
+		
+	</ion-content>
+	<div class="tabs-stable tabs-striped tabs-color-balanced">
+    <div class="tabs ">
+      <a class="tab-item " href="#/tab/screen2">
+        <i class="icon ion-plus-circled"></i>
+        
+      </a>
+      <a class="tab-item active" href="#/tab/history">
+        <i class="icon ion-star"></i>
+       
+      </a>
+      <a class="tab-item" href="#/tab/main">
+        <i class="icon ion-chatboxes"></i>
+       
+      </a>
+    </div>
+  </div>
+</ion-view>

@@ -1,0 +1,60 @@
+﻿<ion-view view-title="{{type.fullName}}" align-title="center">
+	<ion-content class="has-header text-left padding">		
+		
+		<div class="list">
+			<div class="item item-divider">
+				Thông tin của lái xe
+			</div>
+			<div class="item">
+			<p>
+					Số thứ tự: 
+				<span class="item-note">
+					{{type.driverId}}
+				</span>
+			</p>
+			<p>
+					Họ tên: 
+				<span class="item-note">
+					{{type.fullName}}
+				</span>
+			</p>
+			<p>
+					Giá vận chuyển: 
+				<span class="item-note">
+					{{type.price}}
+				</span>
+			</p>
+			<p>
+					Thời gian thực hiện: 
+				<span class="item-note">
+					{{type.time}}
+				</span>
+			</p>
+			</div>
+		</div>
+		<div class="list">
+			<div class="item item-divider">
+				Uy tín của lái xe
+			</div>	
+			<div class="item">
+			<p>
+					Bình chọn: 
+				<span class="item-note" ng-if="!type.rating">
+					Chưa có đánh giá
+				</span>
+				<img class="item-note" ng-src="img/5stars/{{type.rating}}.png" ng-if="type.rating">
+			</p>
+			</div>
+		</div>
+			<div class="text-center padding">
+			<button class="button button-small button-energized" ng-click="choose()" >
+				Lựa chọn
+			</button>
+			</div>
+			
+		
+		
+        
+	</ion-content>
+	
+</ion-view>

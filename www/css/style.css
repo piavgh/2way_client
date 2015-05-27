@@ -1,0 +1,77 @@
+/* Empty. Add your own CSS if you like */
+@font-face {
+    font-family: helvetica-neue-light !important;
+    src: url('../font/helvetica-neue-light.ttf');
+}
+.border{
+	border: 1px ridge;
+}
+
+.ion-google-place-container{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 20;
+    display: none;
+}
+
+.margin-top{
+	margin-top: 20px;
+}
+.margin-right{
+	margin-right: 20px;
+}
+
+
+
+
+img.on {
+    background-color: red;
+	border-radius: 10px 
+}
+
+input.ion-google-place[readonly]{
+    background-color: transparent;
+    cursor: text;
+}
+
+.rating{
+  color: #a9a9a9;
+  margin: 0;
+  padding: 0;
+}
+
+ul.rating {
+  display: inline-block;
+}
+
+.rating li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 1px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.rating .filled {
+  color: #fd0;
+}
+
+.image{
+	margin: auto;
+	min-height: 150px;
+	/*width: 100%;
+	max-width: 320px;
+	max-height: 240px; */
+}
+
+.padding_left{
+	padding-left: 40px;
+}
+
+textarea{
+	width: 100%;
+}

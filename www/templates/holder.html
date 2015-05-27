@@ -1,0 +1,19 @@
+﻿<ion-view view-title="Giao dịch chờ thực hiện" hide-back-button="true">
+	<ion-content class="has-header text-left padding">		
+		<div class="list margin-top" ng-repeat="type in history" >
+	
+			<div class="item item-divider">
+				<span class="item-note">
+					{{type.time}}
+				</span>
+			</div>
+			<a class="item item-text-wrap" ng-href="#/tab/holder/{{type.id}}">
+				<span>{{type.description}}</span>
+			</a>
+		</div>	
+		
+		
+        
+	</ion-content>
+	
+</ion-view>

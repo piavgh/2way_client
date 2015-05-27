@@ -1,0 +1,78 @@
+<ion-view view-title="Thông tin vận chuyển" align-title="center" >
+	<ion-content class="has-header  text-left">
+		
+		<div class="list">
+			
+			<label class="item item-input item-select">
+			  <div class="input-label">
+				Loại xe <span class= "assertive">*</span>
+			  </div>
+			  <select ng-options="item.name for item in values" ng-model="selected">
+			  </select>
+			</label>
+			<label class="item item-input item-select">
+				<div class="input-label">
+					Loại hàng <span class= "assertive">*</span>
+				</div>
+				<select ng-model="type.feature">
+				  <option>Hàng dễ vỡ</option>
+				  <option>Hàng tránh va đập</option>
+				  <option>Hàng dễ cháy</option>
+				  <option>Hàng dễ nổ</option>
+				  <option>Hàng bốc mùi</option>
+				</select>
+			</label>
+			
+			<label class="item item-input">
+				<div class="input-label">
+					Kích thước <span class= "assertive">*</span>
+				</div>
+				<input type="text" class= "text-right" ng-model="type.size" placeholder= "CaoxDàixRộng">	
+			</label>
+			
+			<label class="item item-input">
+				<div class="input-label">
+					Cân nặng <span class= "assertive">*</span>
+				</div>
+				<input type="number" class= "text-right" ng-model="type.weight" placeholder= "Cân nặng">
+			</label>
+			
+			<label class=" item-input">
+				<span class="input-label">Mô tả <span class= "assertive">*</span></span><br/>
+			</label>
+			<div class = "text-center padding">
+		
+			<textarea class="border padding" ng-model="type.description" rows ="3" placeholder="Mô tả đơn hàng"></textarea>
+				
+			<div class="item item-image image" ng-click="takePicture()">
+
+                <!-- Photo upload placeholder -->
+                <div ng-if="!type.imageSrc.length">
+                    <i class="icon ion-camera energized" style="font-size: 50px;"></i>
+                    <div class="energized">
+                        Click để chọn ảnh <span class= "assertive">*</span>
+                    </div>
+                </div>
+                <!-- end of photo placeholder -->
+
+                <!-- Image -->
+                <img ng-if="type.imageSrc.length" ng-src="{{type.imageSrc}}">
+                <!-- end of image -->
+            </div>
+			
+			<button class="button button-small button-assertive" ng-click="removePicture()" ng-if="type.imageSrc.length">
+				<i class="icon ion-trash-b"></i>
+				Xóa
+			</button>
+			</div>
+		</div>
+		<div ng-bind="formWarning" class="assertive text-center padding">
+		</div>
+		<div class="padding">
+		<button class="button button-block button-balanced" ng-click="next()">
+                Tiếp tục
+        </button>
+        </div>
+	</ion-content>
+	
+</ion-view>

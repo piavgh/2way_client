@@ -1,0 +1,39 @@
+﻿
+<!-- Notification for no request -->
+<div class="card" ng-if="!requests.length">
+    <div class="item item-text-wrap text-center">
+        Chưa có giao dịch nào
+    </div>
+</div>
+<!-- end of notification -->
+
+<!-- Request list -->
+<div class="list margin-top" ng-repeat="req in requests" ng-click="goDetail(req)">
+    <div class="item item-divider energized">
+		<span >{{req.totalBid}}</span>
+        <span class="item-note energized">{{req.time}}</span>
+		
+    </div>
+	<div class= "item">
+	<p>
+		<textarea rows='2' disabled>{{req.description}}</textarea>
+	</p>
+	<p>
+			Địa chỉ gửi: 
+		<span class="item-note item-text-wrap">
+			{{req.sendAddress}}
+		</span>
+	</p>
+	<p >
+			Địa chỉ nhận: 
+		<span class="item-note item-text-wrap">
+			{{req.receiveAddress}}
+		</span>
+	</p>
+	<div class="item item-image image" ng-if="req.stuffImagePath.length">
+		<!-- Image -->
+		<img  ng-src="{{req.stuffImagePath}}">
+		<!-- end of image -->
+	</div>
+	</div>
+</div>

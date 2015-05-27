@@ -1,0 +1,158 @@
+﻿<ion-view view-title="Chỉnh sửa thông tin" align-title="center">
+	<ion-content class="has-header text-left padding">	
+		<!-- Pull down refresher -->
+        <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="doRefresh()">
+        </ion-refresher>
+        <!-- end of refresher -->
+	
+		<div class="item item-image image" ng-click="takeAvatarPicture()">
+
+			<!-- Photo upload placeholder -->
+			<div ng-if="!profile.imageSrc.length">
+				<i class="icon ion-camera energized" style="font-size: 50px;"></i>
+				<div class="energized">
+					Click để chọn ảnh
+				</div>
+			</div>
+			<!-- end of photo placeholder -->
+
+			<!-- Image -->
+			<img ng-if="profile.imageSrc.length" ng-src="{{profile.imageSrc}}">
+			<!-- end of image -->
+		</div>
+		<button class="button button-small button-assertive" ng-click="removeAvatarPicture()" ng-if="type.imageSrc.length">
+			<i class="icon ion-trash-b"></i>
+			Xóa
+		</button>
+		<div class="list margin-top">
+			<div class="item item-divider">
+				Thông tin cá nhân
+			</div>
+
+			<label class="item item-input">
+				<div class="input-label">
+					Họ tên
+				</div>
+				<input type="text" class="text-right" ng-model="profile.name" placeholder= "Họ tên">
+			</label>
+			
+			<label class="item item-input">
+				<div class="input-label">
+					Email
+				</div>
+				<input type="text" class="text-right" ng-model="profile.email" placeholder= "Email">
+			</label>
+			
+			<label class="item item-input">
+				<div class="input-label">
+					Số điện thoại
+				</div>
+				<input type="text" class="text-right" ng-model="profile.phoneNumber" placeholder= "Số điện thoại">
+			</label>
+		</div>
+		<div class="list">
+			
+			<div class="item item-divider">
+				Thông tin xác thực
+			</div>
+			<label class="item item-input">
+				<div class="input-label">
+					Số CMTND
+				</div>
+				<input type="text" class="text-right" ng-model="profile.identifyNumber" placeholder= "Số CMTND">
+			</label>
+			
+			<label class="item" ng-click="sendDate()">
+					Ngày cấp
+				<span class="item-note">
+					{{get(profile.identifyDate)}}
+				</span>
+			</label>
+	
+			<!-- <label class="item item-input">
+				<div class="input-label">
+					Nơi cấp
+				</div>
+				<input type="text" class="text-right" ng-model="profile.identifyPlace" placeholder= "Nơi cấp">
+			</label> -->
+			<div class="item item-input-inset">
+				<label class="item-input-wrapper">
+					<input type="text" g-places-autocomplete ng-model="profile.identifyPlace" placeholder="Nơi cấp" style="width: 100%" />
+				</label>
+			</div>
+		</div>
+
+		<div class="item">
+			Ảnh CMTND mặt trước
+		</div>
+		
+			<div class="item item-image image" ng-click="takeFrontPicture()">
+
+                <!-- Photo upload placeholder -->
+                <div ng-if="!profile.imageFront.length">
+                    <i class="icon ion-camera energized" style="font-size: 50px;"></i>
+                    <div class="energized">
+                        Ảnh CMTND mặt trước
+                    </div>
+                </div>
+                <!-- end of photo placeholder -->
+
+                <!-- Image -->
+                <img ng-if="profile.imageFront.length" ng-src="{{profile.imageFront}}">
+                <!-- end of image -->
+            </div>
+			<button class="button button-small button-assertive" ng-click="removeFrontPicture()" ng-if="type.imageSrc.length">
+				<i class="icon ion-trash-b"></i>
+				Xóa
+			</button>
+		
+		<div class="item">
+			Ảnh CMTND mặt sau
+		</div>
+		
+			<div class="item item-image image" ng-click="takeBackPicture()">
+
+                <!-- Photo upload placeholder -->
+                <div ng-if="!profile.imageBack.length">
+                    <i class="icon ion-camera energized" style="font-size: 50px;"></i>
+                    <div class="energized">
+                        Ảnh CMTND mặt sau
+                    </div>
+                </div>
+                <!-- end of photo placeholder -->
+
+                <!-- Image -->
+                <img ng-if="profile.imageBack.length" ng-src="{{profile.imageBack}}">
+                <!-- end of image -->
+            </div>
+			<button class="button button-small button-assertive" ng-click="removeBackPicture()" ng-if="type.imageSrc.length">
+				<i class="icon ion-trash-b"></i>
+				Xóa
+			</button>
+		
+			
+		</div>
+		<div class="list" style="margin-top: 20px;">
+			<div class="item item-divider">
+				Thông tin uy tín
+			</div>
+			<label class="item">
+					Bình chọn
+				<span class="item-note" ng-if="!profile.starRating">
+					Chưa có đánh giá
+				</span>
+				<img class="item-note" ng-src="img/5stars/{{profile.starRating}}.png" ng-if="profile.starRating">
+			</label>
+			</div>
+		</div>
+		<div class="text-center">
+		<button class="button button-block button-balanced" ng-click="next()">
+                Lưu lại
+        </button>
+		</div>
+        
+	</ion-content>
+	
+</ion-view>

@@ -1,0 +1,47 @@
+<ion-view title="2Way" hide-back-button="true" align-title="center">
+	<ion-content has-header="true" has-tabs="true" padding="true">
+		<!-- Pull down refresher -->
+       <!--  <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="doRefresh()">
+        </ion-refresher> -->
+        <!-- end of refresher -->
+ 		<map zoom="16"
+			disable-default-u-i="true"
+			disable-double-click-zoom="false"
+			draggable="true"
+			dragging-cursor="move"
+			keyboard-shortcuts="false"
+			max-zoom="24"
+			min-zoom="8"
+			tilt="45"
+			map-type-id="ROADMAP" style="height:100%">
+		</map>
+        <!-- Request list -->
+        <div ng-include="'templates/request_tab.html'" class="padding-vertical">
+        </div><!-- end of request list -->
+		
+        <!-- Load more scroll -->
+        <!-- <ion-infinite-scroll ng-if='moreDataCanBeLoaded' on-infinite="loadMoreData()" icon="ion-loading-c" distance="1%">
+        </ion-infinite-scroll> -->
+        <!-- end of scroll -->
+	
+
+	</ion-content>
+	<div class="tabs-stable tabs-striped tabs-color-balanced">
+    <div class="tabs ">
+      <a class="tab-item" href="#/tab/screen2">
+        <i class="icon ion-plus-circled"></i>
+        
+      </a>
+      <a class="tab-item" href="#/tab/history">
+        <i class="icon ion-star"></i>
+       
+      </a>
+      <a class="tab-item active" href="#/tab/main">
+        <i class="icon ion-chatboxes"></i>
+       
+      </a>
+    </div>
+  </div>
+</ion-view>

@@ -1,0 +1,127 @@
+﻿<ion-view view-title="Giao dịch chờ thực hiện" align-title="center">
+	<ion-content class="has-header text-left padding">		
+		<!-- Pull down refresher -->
+        <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="doRefresh()">
+        </ion-refresher>
+        <!-- end of refresher -->
+		<div class="item item-image image" ng-if="type.stuffImagePath.length">
+					<!-- Image -->
+					<img  ng-src="{{type.stuffImagePath}}">
+					<!-- end of image -->
+		</div>
+		<div class="list">
+			<div class="item item-divider">
+				Thông tin hàng hóa
+			</div>
+				
+			
+			<div class="item">
+			<p>
+					Mô tả: 
+				<span class="item-note item-text-wrap">
+					{{type.description}}
+				</span>
+			</p>
+			<p>
+					Chủng loại hàng: 
+				<span class="item-note">
+					{{type.feature}}
+				</span>
+			</p>
+			<p>
+					Loại xe: 
+				<span class="item-note">
+					{{getVehicles(type.vehicleType)}}
+				</span>
+			</p>
+			<p>
+					Kích thước: 
+				<span class="item-note">
+					{{type.length}}x{{type.width}}x{{type.height}}
+				</span>
+			</p>
+			<p>
+					Cân nặng: 
+				<span class="item-note">
+					{{type.weight}}
+				</span>
+			</p>	
+			<p>
+					Địa chỉ gửi: 
+				<span class="item-note item-text-wrap">
+					{{type.sendAddress}}
+				</span>
+			</p>
+			<p>
+					Địa chỉ nhận: 
+				<span class="item-note item-text-wrap">
+					{{type.receiveAddress}}
+				</span>
+			</p>
+			</div>
+		</div>	
+		
+		<div class="list margin-top">
+			<div class="item item-divider">
+				Thông tin người nhận
+			</div>
+			
+			<div class="item">
+			<p>
+					Họ tên: 
+				<span class="item-note">
+					{{type.receiverName}}
+				</span>
+			</p>
+			<p>
+					Giới tính: 
+				<span class="item-note">
+					{{getGender(type.receiverGender)}}
+				</span>
+			</p>
+			
+			<p>
+					Ngày nhận: 
+				<span class="item-note">
+					{{type.receiverDatetime}}
+				</span>
+			</p>
+			<p>
+					Số điện thoại: 
+				<span class="item-note">
+					{{type.receiverPhone}}
+				</span>
+			</p>
+			<p>
+					Số CMT: 
+				<span class="item-note">
+					{{type.receiverIdentify}}
+				</span>
+			</p>
+				<div class="item item-image image" ng-if="type.receiverImagePath.length">
+					<!-- Image -->
+					<img  ng-src="{{type.receiverImagePath}}">
+					<!-- end of image -->
+				</div>
+			</div>
+		</div>
+			<div class="text-center padding">
+			<button class="button button-small button-assertive" ng-click="cancel()">
+				Hủy giao dịch
+			</button>
+			</div>
+		<!-- Request list -->
+		
+        <div ng-include="'templates/request_tab1.html'" class="padding-vertical">
+        </div><!-- end of request list -->
+		
+		<!-- Load more scroll -->
+        <ion-infinite-scroll ng-if='moreDataCanBeLoaded' on-infinite="loadMoreData()" icon="ion-loading-c" distance="1%">
+        </ion-infinite-scroll>
+        <!-- end of scroll -->
+        
+	</ion-content>
+	
+</ion-view>

@@ -1,0 +1,157 @@
+<ion-view view-title="Hồ sơ cá nhân" hide-back-button="true" align-title="center">
+	<ion-content class="has-header text-left padding">		
+		<!-- Pull down refresher -->
+        <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="doRefresh()">
+        </ion-refresher>
+        <!-- end of refresher -->
+		<div class="item item-image image" ng-if="profile.imageSrc.length">
+
+			<!-- Photo upload placeholder -->
+		<!-- 	<div ng-if="!profile.imageSrc.length">
+				<i class="icon ion-camera energized" style="font-size: 50px;"></i>
+				<div class="energized">
+					Click để chọn ảnh
+				</div>
+			</div> -->
+			<!-- end of photo placeholder -->
+
+			<!-- Image -->
+			<img  ng-src="{{profile.imageSrc}}">
+			<!-- end of image -->
+		</div>
+		
+		<div class="list margin-top">
+			<div class="item item-divider">
+				Thông tin cá nhân
+			</div>
+
+			<label class="item">
+					Họ tên
+				<span class="item-note">
+					{{profile.name}}
+				</span>
+			</label>
+			
+			<label class="item">
+					Email
+				<span class="item-note">
+					{{profile.email}}
+				</span>
+			</label>
+			
+			<label class="item">
+					Số điện thoại
+				<span class="item-note">
+					{{profile.phoneNumber}}
+				</span>
+			</label>
+		</div>	
+		<div class="list">
+			
+			<div class="item item-divider">
+				Thông tin xác thực
+			</div>
+			<label class="item">
+					Số CMTND
+				<span class="item-note">
+					{{profile.identifyNumber}}
+				</span>
+			</label>
+			<label class="item">
+					Ngày cấp
+				<span class="item-note">
+					{{profile.identifyDate}}
+				</span>
+			</label>
+			<label class="item">
+					Nơi cấp
+				<span class="item-note">
+					{{profile.identifyPlace}}
+				</span>
+			</label>
+		</div>	
+			<div class="item item-image image" ng-if="profile.imageFront.length" >
+
+                <!-- Photo upload placeholder -->
+                <!-- <div ng-if="!profile.imageSrc.length">
+                    <i class="icon ion-camera energized" style="font-size: 50px;"></i>
+                    <div class="energized">
+                        Ảnh CMTND mặt trước
+                    </div>
+                </div> -->
+                <!-- end of photo placeholder -->
+
+                <!-- Image -->
+                <img ng-src="{{profile.imageFront}}">
+                <!-- end of image -->
+            </div>
+			
+			<div class="item item-image image" ng-if="profile.imageBack.length">
+
+                <!-- Photo upload placeholder -->
+                <!-- <div ng-if="!profile.imageSrc.length">
+                    <i class="icon ion-camera energized" style="font-size: 50px;"></i>
+                    <div class="energized">
+                        Ảnh CMTND mặt sau
+                    </div>
+                </div> -->
+                <!-- end of photo placeholder -->
+
+                <!-- Image -->
+                <img ng-src="{{profile.imageBack}}">
+                <!-- end of image -->
+            </div>
+		
+		<div class="list margin-top">
+			<div class="item item-divider">
+				Thông tin uy tín
+			</div>
+			<label class="item">
+					Bình chọn
+				<span class="item-note" ng-if="!profile.starRating">
+					Chưa có đánh giá
+				</span>
+				<img class="item-note" ng-src="img/5stars/{{profile.starRating}}.png" ng-if="profile.starRating">
+			</label>
+			</div>
+			<div class="item item-divider ">
+				Danh sách lái xe đánh giá
+			</div>
+			
+			<!-- Notification for no request -->
+			<div class="card" ng-if="!requests.length">
+				<div class="item item-text-wrap text-center">
+					Chưa có giao dịch nào
+				</div>
+			</div>
+			<!-- end of notification -->
+
+			<!-- Request list -->
+			<div class="list margin-top" ng-repeat="req in requests">
+				<div class="item item-divider">
+					<span ng-class="{energized: (req.rating === '5'),
+								positive: (req.rating === '3'), balanced: (req.rating === '4'), assertive: (req.rating === '1'), royal: (req.rating === '2')}">
+					{{req.fullName}}
+					</span>
+					<img class="item-note"  ng-src="{{get(req.rating)}}"/>
+				</div>
+				<div class="item">
+					<textarea rows='2' disabled>{{req.comment}}</textarea>
+				</div>
+				
+			</div>
+			
+			
+		</div>
+		
+		<div class="text-center">
+		<button class="button button-block button-balanced" ng-click="next()">
+                Chỉnh sửa thông tin
+        </button>
+		</div>
+        
+	</ion-content>
+	
+</ion-view>
