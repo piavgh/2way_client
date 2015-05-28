@@ -1,7 +1,7 @@
 {
-  "name": "way",
+  "name": "client2way",
   "version": "1.0.0",
-  "description": "way: An Ionic project",
+  "description": "client2way: Sharing Economy in Delivery",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^0.7.1",

@@ -1,5 +1,4 @@
-﻿
-<!-- Notification for no request -->
+﻿<!-- Notification for no request -->
 <div class="card" ng-if="!requests.length">
     <div class="item item-text-wrap text-center">
         Chưa có giao dịch nào
@@ -10,39 +9,43 @@
 <!-- Request list -->
 <div class="list margin-top" ng-repeat="req in requests" ng-click="goDetail(req)">
     <div class="item item-divider">
-        <span class="item-note" ng-class="{assertive: (req.status === '5'),
+        <span ng-class="{assertive: (req.status === '5'),
 					positive: (req.status === '3'), balanced: (req.status === '4'), energized: (req.status === '1'), royal: (req.status === '2')}">{{req.time}}</span>
-		
-    </div>
-	<div class="item">
-	<p>
-		<textarea rows='2' disabled>{{req.description}}</textarea>
-	</p>
-	<p>
-		Họ tên: 
-		<label class="item-note"> {{req.fullName}}</label>
 
-	</p>
-	<p>
-		Giá: 
-		<label class="item-note positive">{{req.price}} VND</label>
-	</p>
-	<p>
-			Địa chỉ gửi: 
+    </div>
+    <div class="item">
+        <p>
+            <textarea rows='2' disabled>{{req.description}}</textarea>
+        </p>
+
+        <p>
+            Họ tên:
+            <label class="item-note"> {{req.fullName}}</label>
+
+        </p>
+
+        <p>
+            Giá:
+            <label class="item-note positive">{{req.price}} VND</label>
+        </p>
+
+        <p>
+            Địa chỉ gửi:
 		<span class="item-note item-text-wrap">
 			{{req.sendAddress}}
 		</span>
-	</p>
-	<p>
-			Địa chỉ nhận: 
+        </p>
+
+        <p>
+            Địa chỉ nhận:
 		<span class="item-note item-text-wrap">
 			{{req.receiveAddress}}
 		</span>
-	</p>
-	<div class="item item-image image" ng-if="req.stuffImagePath.length">
-		<!-- Image -->
-		<img  ng-src="{{req.stuffImagePath}}">
-		<!-- end of image -->
-	</div>
-	</div>
+        </p>
+    </div>
+    <div class="item item-image image" ng-if="req.stuffImagePath.length">
+        <!-- Image -->
+        <img ng-src="{{req.stuffImagePath}}">
+        <!-- end of image -->
+    </div>
 </div>

@@ -63,9 +63,9 @@ ul.rating {
 .image{
 	margin: auto;
 	min-height: 150px;
-	/*width: 100%;
-	max-width: 320px;
-	max-height: 240px; */
+	/*width: 100%;*/
+	/*max-width: 320px;*/
+	max-height: 200px;
 }
 
 .padding_left{

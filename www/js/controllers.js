@@ -22,6 +22,8 @@ angular.module('starter.controllers', [])
             icon: 'ion-filing'
         }];
 
+        $scope.clientPhone = localStorage.phone === undefined ? "" : localStorage.phone;
+        $scope.clientAvatar = localStorage.avatar === undefined ? "" : localStorage.avatar;
 
         $scope.exitApp = function () {
             $ionicPopup.show({
@@ -128,8 +130,10 @@ angular.module('starter.controllers', [])
                                         .success(function (response) {
                                             GlobalTpl.hideLoading();
                                             GlobalTpl.showAlert({template: "Xác thực thành công"});
-                                            window.localStorage['register'] = true;
-                                            window.localStorage['clientId'] = response.data.clientId;
+                                            localStorage.register = true;
+                                            localStorage.clientId = response.data.clientId;
+                                            localStorage.phone = (response.data.phone.substring(0, 2) == "84") ? "0" + response.data.phone.substring(2) : response.data.phone;
+                                            localStorage.avatar = response.data.avatar;
                                             $state.go('tab.main');
                                         })
                                         .error(function (response) {
@@ -621,7 +625,7 @@ angular.module('starter.controllers', [])
                         type: 'button-positive',
                         onTap: function (e) {
                             var options = {
-                                quality: 75,
+                                quality: 100,
                                 destinationType: Camera.DestinationType.FILE_URI,
                                 sourceType: Camera.PictureSourceType.CAMERA,
                                 mediaType: Camera.MediaType.PICTURE,
@@ -654,7 +658,7 @@ angular.module('starter.controllers', [])
                         type: 'button-positive',
                         onTap: function (e) {
                             var options = {
-                                quality: 75,
+                                quality: 100,
                                 destinationType: Camera.DestinationType.FILE_URI,
                                 sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
                                 mediaType: Camera.MediaType.PICTURE,
@@ -951,7 +955,7 @@ angular.module('starter.controllers', [])
                         type: 'button-positive',
                         onTap: function (e) {
                             var options = {
-                                quality: 75,
+                                quality: 100,
                                 destinationType: Camera.DestinationType.FILE_URI,
                                 sourceType: Camera.PictureSourceType.CAMERA,
                                 mediaType: Camera.MediaType.PICTURE,
@@ -984,7 +988,7 @@ angular.module('starter.controllers', [])
                         type: 'button-positive',
                         onTap: function (e) {
                             var options = {
-                                quality: 75,
+                                quality: 100,
                                 destinationType: Camera.DestinationType.FILE_URI,
                                 sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
                                 mediaType: Camera.MediaType.PICTURE,
@@ -1342,7 +1346,7 @@ angular.module('starter.controllers', [])
                         type: 'button-positive',
                         onTap: function (e) {
                             var options = {
-                                quality: 75,
+                                quality: 100,
                                 destinationType: Camera.DestinationType.FILE_URI,
                                 sourceType: Camera.PictureSourceType.CAMERA,
                                 mediaType: Camera.MediaType.PICTURE,
@@ -1375,7 +1379,7 @@ angular.module('starter.controllers', [])
                         type: 'button-positive',
                         onTap: function (e) {
                             var options = {
-                                quality: 75,
+                                quality: 100,
                                 destinationType: Camera.DestinationType.FILE_URI,
                                 sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
                                 mediaType: Camera.MediaType.PICTURE,
@@ -1496,7 +1500,7 @@ angular.module('starter.controllers', [])
                         type: 'button-positive',
                         onTap: function (e) {
                             var options = {
-                                quality: 75,
+                                quality: 100,
                                 destinationType: Camera.DestinationType.FILE_URI,
                                 sourceType: Camera.PictureSourceType.CAMERA,
                                 mediaType: Camera.MediaType.PICTURE,
@@ -1529,7 +1533,7 @@ angular.module('starter.controllers', [])
                         type: 'button-positive',
                         onTap: function (e) {
                             var options = {
-                                quality: 75,
+                                quality: 100,
                                 destinationType: Camera.DestinationType.FILE_URI,
                                 sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
                                 mediaType: Camera.MediaType.PICTURE,
@@ -1648,7 +1652,7 @@ angular.module('starter.controllers', [])
                         type: 'button-positive',
                         onTap: function (e) {
                             var options = {
-                                quality: 75,
+                                quality: 100,
                                 destinationType: Camera.DestinationType.FILE_URI,
                                 sourceType: Camera.PictureSourceType.CAMERA,
                                 mediaType: Camera.MediaType.PICTURE,
@@ -1681,7 +1685,7 @@ angular.module('starter.controllers', [])
                         type: 'button-positive',
                         onTap: function (e) {
                             var options = {
-                                quality: 75,
+                                quality: 100,
                                 destinationType: Camera.DestinationType.FILE_URI,
                                 sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
                                 mediaType: Camera.MediaType.PICTURE,
@@ -1877,11 +1881,12 @@ angular.module('starter.controllers', [])
                     // Fetch new requests
                     for (var i in response.data) {
                         var req = response.data[i];
+                        var createdDate = new Date(req.detail.createdAt.substring(0, 10));
                         if (typeof req.driver === 'undefined') {
                             $scope.requests.push({
                                 requestId: (typeof req.detail.id === 'undefined') ? '' : req.detail.id,
                                 description: (typeof req.detail.description === 'undefined') ? '' : req.detail.description,
-                                time: (typeof req.detail.createdAt === 'undefined') ? '' : req.detail.createdAt,
+                                time: "Ngày " + createdDate.getDate() + " tháng " + (createdDate.getMonth() + 1) + " năm " + createdDate.getFullYear() + " lúc " + req.detail.createdAt.substring(11, 16),
                                 price: (typeof req.price === 'undefined') ? '' : req.price,
                                 status: (typeof req.detail.status === 'undefined') ? '' : req.detail.status,
                                 timeReturn: (typeof req.receiveTime === 'undefined') ? '' : req.location[1].time,
@@ -1895,7 +1900,7 @@ angular.module('starter.controllers', [])
                                 requestId: (typeof req.detail.id === 'undefined') ? '' : req.detail.id,
                                 description: (typeof req.detail.description === 'undefined') ? '' : req.detail.description,
                                 fullName: (typeof req.driver.fullName === 'undefined') ? '' : req.driver.fullName,
-                                time: (typeof req.detail.createdAt === 'undefined') ? '' : req.detail.createdAt,
+                                time: "Ngày " + createdDate.getDate() + " tháng " + (createdDate.getMonth() + 1) + " năm " + createdDate.getFullYear() + " lúc " + req.detail.createdAt.substring(11, 16),
                                 price: (typeof req.price === 'undefined') ? '' : req.price,
                                 status: (typeof req.detail.status === 'undefined') ? '' : req.detail.status,
                                 timeReturn: (typeof req.receiveTime === 'undefined') ? '' : req.location[1].time,
@@ -2000,11 +2005,12 @@ angular.module('starter.controllers', [])
                     // Fetch new requests
                     for (var i in response.data) {
                         var req = response.data[i];
+                        var createdDate = new Date(req.detail.createdAt.substring(0, 10));
                         if (typeof req.driver === 'undefined') {
                             $scope.requests.push({
                                 requestId: (typeof req.detail.id === 'undefined') ? '' : req.detail.id,
                                 description: (typeof req.detail.description === 'undefined') ? '' : req.detail.description,
-                                time: (typeof req.detail.createdAt === 'undefined') ? '' : req.detail.createdAt,
+                                time: "Ngày " + createdDate.getDate() + " tháng " + (createdDate.getMonth() + 1) + " năm " + createdDate.getFullYear() + " lúc " + req.detail.createdAt.substring(11, 16),
                                 price: (typeof req.price === 'undefined') ? '' : req.price,
                                 status: (typeof req.detail.status === 'undefined') ? '' : req.detail.status,
                                 timeReturn: (typeof req.receiveTime === 'undefined') ? '' : req.location[1].time,
@@ -2018,7 +2024,7 @@ angular.module('starter.controllers', [])
                                 requestId: (typeof req.detail.id === 'undefined') ? '' : req.detail.id,
                                 description: (typeof req.detail.description === 'undefined') ? '' : req.detail.description,
                                 fullName: (typeof req.driver.fullName === 'undefined') ? '' : req.driver.fullName,
-                                time: (typeof req.detail.createdAt === 'undefined') ? '' : req.detail.createdAt,
+                                time: "Ngày " + createdDate.getDate() + " tháng " + (createdDate.getMonth() + 1) + " năm " + createdDate.getFullYear() + " lúc " + req.detail.createdAt.substring(11, 16),
                                 price: (typeof req.price === 'undefined') ? '' : req.price,
                                 status: (typeof req.detail.status === 'undefined') ? '' : req.detail.status,
                                 timeReturn: (typeof req.receiveTime === 'undefined') ? '' : req.location[1].time,

@@ -32,15 +32,15 @@ navigation history that also transitions its views in and out.
     <ion-side-menu side="left">
         <ion-content>
             <ion-item class="item-avatar stable-bg">
-                <div class="item item-image" ng-if="driverAvatar.length">
-                    <img ng-src="{{driverAvatar}}">
+                <div class="item item-image" ng-if="clientAvatar != ''">
+                    <img ng-src="{{clientAvatar}}">
                 </div>
-                <div class="item item-image" ng-if="!driverAvatar.length">
+                <div class="item item-image" ng-if="clientAvatar == ''">
                     <img src="img/ionic.png">
                 </div>
-                <h2>{{driverName}}</h2>
+                <h2>{{clientPhone}}</h2>
 
-                <p>{{driverPhone}}</p>
+                <p>Xin chào</p>
             </ion-item>
             <ion-list>
                 <ion-item ng-repeat="menu in settings" class="item-icon-right" menu-close ng-href="{{menu.href}}">
