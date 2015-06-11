@@ -1,7 +1,10 @@
 /* Empty. Add your own CSS if you like */
 @font-face {
-    font-family: helvetica-neue-light !important;
-    src: url('../font/helvetica-neue-light.ttf');
+    font-family: OpenSans-Regular !important;
+    src: url('../font/times.ttf');
+}
+body{
+    font-family: OpenSans-Regular;
 }
 .border{
 	border: 1px ridge;
